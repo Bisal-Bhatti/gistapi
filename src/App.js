@@ -1,16 +1,23 @@
-
-import styled from 'styled-components'
+import { useState } from "react";
+import styled from "styled-components";
 import Header from "./components/Header";
 import GlobalStyles from "./GlobalStyle";
+import GistList from "./components/GistList";
 
 const App = () => {
+  const [search, setSearch] = useState("");
   return (
     <Wrapper className="App" data-testid="app">
-      <Header />
+      <Header
+        handleSearch={(e) => {
+          setSearch(e);
+        }}
+      />
       <GlobalStyles />
+      <GistList search={search} />
     </Wrapper>
   );
-}
+};
 
 const Wrapper = styled.div`
   font-size: 14px;
